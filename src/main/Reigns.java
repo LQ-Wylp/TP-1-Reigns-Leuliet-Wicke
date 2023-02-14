@@ -22,6 +22,8 @@ public class Reigns {
 
     private static int nbTours = 0;
 
+    public static boolean Fin = false;
+
     /**
      * La méthode main lance le jeu Reigns. Il initialise les questions, le personnage,
      * affiche les jauges du personnage et lance une boucle de jeu qui se termine lorsque le personnage perd.
@@ -32,7 +34,7 @@ public class Reigns {
     public static void main(String[] args){
 
         initPartie();
-        while(!personnage.finDuJeu()){
+        while(!Fin){
             TourDeJeu();
         }
         GameOver();
@@ -65,6 +67,7 @@ public class Reigns {
 
     private static void initPartie(){
         int nbTours = 0;
+        Fin = false;
         System.out.println("Bienvenue sur Reigns");
 
         initBanqueQuestions();
@@ -104,7 +107,7 @@ public class Reigns {
         System.out.println(
                 "Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
         int genre = scanner.nextInt();
-        
+
         Genre roiReine;
         if(genre==1){
             roiReine = Genre.ROI;

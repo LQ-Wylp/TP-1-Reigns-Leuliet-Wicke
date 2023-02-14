@@ -64,7 +64,12 @@ public class Jauge {
      * @param valeur La nouvelle valeur de la jauge
      */
     public void setValeur(int valeur) {
-        this.valeur = valeur;
+        if (valeur <= 0 || valeur >= 50){
+            Reigns.Fin = true;
+        }
+        else {
+            this.valeur = valeur;
+        }
     }
 
     /**

@@ -15,22 +15,12 @@ public class Personnage {
      * Le genre du personnage
      */
     protected Genre genre;
+
     /**
-     * La jauge de Clergé
+     * Les jauges
      */
-    protected Jauge jaugeClerge;
-    /**
-     * La jauge de Peuple
-     */
-    protected Jauge jaugePeuple;
-    /**
-     * La jauge d'Armée
-     */
-    protected Jauge jaugeArmee;
-    /**
-     * La jauge de Finances
-     */
-    protected Jauge jaugeFinance;
+    protected Jauge jaugeClerge, jaugePeuple, jaugeArmee, jaugeFinance;
+
 
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
@@ -43,6 +33,10 @@ public class Personnage {
         this.nom = nom;
         this.genre = genre;
 
+        this.initJauges();
+    }
+
+    public void initJauges(){
         // Initialisation des jauges entre 15 et 35 points
         jaugeClerge = new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15)));
         jaugePeuple = new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15)));
@@ -62,26 +56,6 @@ public class Personnage {
     }
 
     /**
-     * Vérifie si le jeu est fini en vérifiant si une des jauges est à 0 ou 50.
-     *
-     * @return true si le jeu est fini, false sinon
-     */
-    public boolean finDuJeu(){
-        if(jaugeClerge.getValeur()<=0
-                || jaugeClerge.getValeur()>=50
-                || jaugePeuple.getValeur()<=0
-                || jaugePeuple.getValeur()>=50
-                || jaugeArmee.getValeur()<=0
-                || jaugeArmee.getValeur()>=50
-                || jaugeFinance.getValeur()<=0
-                || jaugeFinance.getValeur()>=50){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    /**
      * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
      * et des "_" pour représenter la valeur manquante.
      *
@@ -94,7 +68,7 @@ public class Personnage {
             resultat += "#";
         }
         // on complète avec ____
-        for(int i=0;i<50-(jauge.getValeur()>0?jauge.getValeur():0);i++){
+        for(int i=0;i<50-jauge.getValeur();i++){
             resultat += "_";
         }
         resultat += "] ";
