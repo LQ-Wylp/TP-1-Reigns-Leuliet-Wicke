@@ -10,33 +10,11 @@ public class Jauge {
         this.valeur = valeur;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public int getValeur() {
-        return valeur;
-    }
-
     public void setValeur(int valeur) {
+        this.valeur = valeur;
         if (valeur <= 0 || valeur >= 50){
             Reigns.GameOver();
         }
-        else {
-            this.valeur = valeur;
-        }
-    }
-
-    public TypeJauge getType() {
-        return type;
-    }
-
-    public void setType(TypeJauge type) {
-        this.type = type;
     }
 
     public void afficheJauge() {
@@ -49,5 +27,21 @@ public class Jauge {
         // affichage du nom
         resultat.append(nom);
         System.out.println(resultat);
+    }
+
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public int getValeur() {
+        return valeur;
+    }
+    public TypeJauge getType() {
+        return type;
+    }
+    public void setType(TypeJauge type) {
+        this.type = type;
     }
 }

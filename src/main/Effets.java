@@ -28,20 +28,8 @@ public class Effets {
 
     public void appliqueEffets(Personnage personnage){
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            switch (effet.getKey()) {
-                case ARMEE ->
-                        personnage.getJauge(TypeJauge.ARMEE).setValeur(personnage.getJauge(TypeJauge.ARMEE).getValeur()
-                                + effet.getValue());
-                case CLERGE -> personnage.getJauge(TypeJauge.CLERGE).setValeur(
-                        personnage.getJauge(TypeJauge.CLERGE).getValeur()
-                                + effet.getValue());
-                case FINANCE -> personnage.getJauge(TypeJauge.FINANCE).setValeur(
-                        personnage.getJauge(TypeJauge.FINANCE).getValeur()
-                                + effet.getValue());
-                case PEUPLE -> personnage.getJauge(TypeJauge.PEUPLE).setValeur(
-                        personnage.getJauge(TypeJauge.PEUPLE).getValeur()
-                                + effet.getValue());
-            }
+            Jauge target = personnage.getJauge(effet.getKey());
+            target.setValeur(target.getValeur() + effet.getValue());
         }
     }
 
