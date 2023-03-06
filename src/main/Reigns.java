@@ -14,9 +14,9 @@ public class Reigns {
 
     private static boolean fin = false;
 
+
     public static void main(String[] args){
         initPartie();
-
         while(!fin){
             TourDeJeu();
         }
@@ -49,6 +49,7 @@ public class Reigns {
 
     private static void initPartie(){
         int nbTours = 0;
+      
         fin = false;
 
         System.out.println("Bienvenue sur Reigns");

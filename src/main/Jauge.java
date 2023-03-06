@@ -38,6 +38,7 @@ public class Jauge {
     public int getValeur() {
         return valeur;
     }
+
     public TypeJauge getType() {
         return type;
     }

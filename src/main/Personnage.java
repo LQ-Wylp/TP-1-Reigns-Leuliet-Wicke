@@ -8,6 +8,7 @@ public class Personnage {
     protected Genre genre;
     protected Map<TypeJauge, Jauge> jauges;
 
+
     public Personnage(String nom, Genre genre) {
         this.nom = nom;
         this.genre = genre;
