@@ -1,9 +1,12 @@
 package main;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Personnage {
     protected String nom;
     protected Genre genre;
-    protected Jauge jaugeClerge, jaugePeuple, jaugeArmee, jaugeFinance;
+    protected Map<TypeJauge, Jauge> jauges;
 
     public Personnage(String nom, Genre genre) {
         this.nom = nom;
@@ -12,18 +15,17 @@ public class Personnage {
     }
 
     public void initJauges(){
-        // Initialisation des jauges entre 15 et 35 points
-        jaugeClerge = new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15)));
-        jaugePeuple = new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeArmee = new Jauge("Armée", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeFinance = new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15)));
+        this.jauges = new TreeMap<>();
+        jauges.put(TypeJauge.CLERGE , new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15))));
+        jauges.put(TypeJauge.PEUPLE , new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15))));
+        jauges.put(TypeJauge.ARMEE , new Jauge("Armée", 15 + (int)(Math.random() * (35 - 15))));
+        jauges.put(TypeJauge.FINANCE , new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15))));
     }
 
     public void AfficheJauges() {
-        jaugeClerge.afficheJauge();
-        jaugePeuple.afficheJauge();
-        jaugeArmee.afficheJauge();
-        jaugeFinance.afficheJauge();
+        for (Map.Entry<TypeJauge, Jauge> jauge : jauges.entrySet()) {
+            jauge.getValue().afficheJauge();
+        }
         System.out.println();
     }
 
@@ -44,31 +46,11 @@ public class Personnage {
     }
 
     public Jauge getJauge(TypeJauge type){
-        switch (type){
-            case CLERGE:
-                return jaugeClerge;
-            case PEUPLE:
-                return jaugePeuple;
-            case ARMEE:
-                return jaugeArmee;
-            case FINANCE:
-                return jaugeFinance;
-            default:
-                return null;
-        }
+        return jauges.get(type);
     }
 
     public void setJauge(TypeJauge type, Jauge jauge){
-        switch (type){
-            case CLERGE:
-                this.jaugeClerge = jauge;
-            case PEUPLE:
-                this.jaugePeuple = jauge;
-            case ARMEE:
-                this.jaugeArmee = jauge;
-            case FINANCE:
-                this.jaugeFinance = jauge;
-        }
+        jauges.put(type, jauge);
     }
 
 }
